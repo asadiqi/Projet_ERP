@@ -2,18 +2,17 @@ from odoo import models, fields, api
 
 class BikeAvailabilityWizard(models.TransientModel):
     _name = 'bike.availability.wizard'
-    _description = 'Vérifier disponibilité des vélos'
+    _description = 'Check Bike Availability'
 
-    start_date = fields.Date(string="Date début", required=True)
-    end_date = fields.Date(string="Date fin", required=True)
+    start_date = fields.Date(string="Start Date", required=True)
+    end_date = fields.Date(string="End Date", required=True)
 
     available_bike_ids = fields.Many2many(
         'bike.model',
-        string="Vélos disponibles"
+        string="Available Bikes"
     )
 
     def _compute_available_bikes(self):
-        """Recherche des vélos disponibles"""
         for wiz in self:
             if not (wiz.start_date and wiz.end_date):
                 wiz.available_bike_ids = self.env['bike.model'].search([])
@@ -31,8 +30,6 @@ class BikeAvailabilityWizard(models.TransientModel):
             ])
 
     def action_check_availability(self):
-        """Bouton : met à jour la liste et garde la popup ouverte"""
-
         self._compute_available_bikes()
 
         return {
