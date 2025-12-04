@@ -1,0 +1,27 @@
+<odoo>
+    <!-- Menu principal -->
+    <menuitem id="menu_bike_rental_root"
+              name="Location de vélos"
+              sequence="10"/>
+
+    <!-- Sous-menu : vélos -->
+    <menuitem id="menu_bike_models"
+              name="Vélos"
+              parent="menu_bike_rental_root"
+              action="action_bike_models"
+              sequence="1"/>
+
+    <!-- Sous-menu : contrats -->
+    <menuitem id="menu_bike_rental_contracts"
+              name="Contrats de location"
+              parent="menu_bike_rental_root"
+              action="action_bike_rental_contracts"
+              sequence="2"/>
+
+    <!-- Sous-menu : disponibilité -->
+    <menuitem id="menu_bike_availability" 
+              name="Disponibilité"  
+              parent="menu_bike_rental_root" 
+              action="action_bike_availability_wizard" 
+              sequence="3"/>
+</odoo>
