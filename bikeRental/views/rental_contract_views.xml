@@ -1,35 +1,35 @@
 <odoo>
 
-    <!-- Action : ouvre la vue list+form des contrats -->
+    <!-- Action: opens list+form view of contracts -->
     <record id="action_bike_rental_contracts" model="ir.actions.act_window">
-        <field name="name">Contrats de location</field>
+        <field name="name">Rental Contracts</field>
         <field name="res_model">bike.rental.contract</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Vue liste -->
+    <!-- List view -->
     <record id="view_bike_rental_contract_list" model="ir.ui.view">
         <field name="name">bike.rental.contract.list</field>
         <field name="model">bike.rental.contract</field>
         <field name="arch" type="xml">
-            <list string="Contrats de location">
+            <list string="Rental Contracts">
                 <field name="name"/>
                 <field name="customer_id"/>
                 <field name="bike_id"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                <field name="duration" string="Durée (jours)"/>
-                <field name="price" string="Prix total"/>
+                <field name="duration" string="Duration (days)"/>
+                <field name="price" string="Total Price"/>
             </list>
         </field>
     </record>
 
-    <!-- Vue formulaire -->
+    <!-- Form view -->
     <record id="view_bike_rental_contract_form" model="ir.ui.view">
         <field name="name">bike.rental.contract.form</field>
         <field name="model">bike.rental.contract</field>
         <field name="arch" type="xml">
-            <form string="Contrat de location">
+            <form string="Rental Contract">
                 <sheet>
 
                     <group>
@@ -46,7 +46,7 @@
                         </group>
                     </group>
 
-                    <!-- Onglet pour la zone Notes -->
+                    <!-- Notebook for Notes section -->
                     <notebook>
                         <page string="Notes">
                             <field name="notes"/>

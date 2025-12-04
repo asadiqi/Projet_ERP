@@ -1,49 +1,33 @@
 <odoo>
-
-    <!-- ========================================================= -->
-    <!-- ACTION : ouvre le wizard dans une fenêtre popup (target=new) -->
-    <!-- ========================================================= -->
     <record id="action_bike_availability_wizard" model="ir.actions.act_window">
-        <field name="name">Disponibilité vélos</field>
+        <field name="name">Bike Availability</field>
         <field name="res_model">bike.availability.wizard</field>
         <field name="view_mode">form</field>
-        <field name="target">new</field> <!-- popup -->
+        <field name="target">new</field>
     </record>
 
-
-    <!-- ========================================================= -->
-    <!-- VUE FORMULAIRE DU WIZARD -->
-    <!-- ========================================================= -->
     <record id="view_bike_availability_wizard_form" model="ir.ui.view">
         <field name="name">bike.availability.wizard.form</field>
         <field name="model">bike.availability.wizard</field>
         <field name="arch" type="xml">
-            <form string="Disponibilité des vélos">
-
+            <form string="Bike Availability">
                 <group>
                     <field name="start_date"/>
                     <field name="end_date"/>
-
-                    <!-- Bouton pour déclencher la recherche -->
                     <button name="action_check_availability"
-                            string="Vérifier disponibilité"
+                            string="Check Availability"
                             type="object"
                             class="btn-primary"/>
                 </group>
-
-                <group string="Vélos disponibles">
-                    <!-- Affichage dynamique de la liste -->
+                <group string="Available Bikes">
                     <field name="available_bike_ids"
                            mode="kanban,tree"
                            readonly="1"/>
                 </group>
-
                 <footer>
-                    <button string="Fermer" class="btn-secondary" special="cancel"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
                 </footer>
-
             </form>
         </field>
     </record>
-
 </odoo>
