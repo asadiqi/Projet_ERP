@@ -1,0 +1,4 @@
+id,name,customer_id/id,bike_id/id,start_date,end_date,price
+contract_1,Contrat spécial,client_1,bike_1,2025-11-27,2025-11-29,15
+contract_2,Contrat 2,client_2,bike_2,2025-11-05,2025-11-07,24
+contract_3,Contrat 3,client_3,bike_3,2025-11-10,2025-11-12,36
