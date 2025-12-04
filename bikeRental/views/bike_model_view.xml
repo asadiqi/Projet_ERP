@@ -2,12 +2,12 @@
 
     <!-- Action -->
     <record id="action_bike_models" model="ir.actions.act_window">
-        <field name="name">Vélos</field>
+        <field name="name">Bikes</field>
         <field name="res_model">bike.model</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Vue liste -->
+    <!-- List view -->
     <record id="view_bike_model_list" model="ir.ui.view">
         <field name="name">bike.model.list</field>
         <field name="model">bike.model</field>
@@ -22,12 +22,12 @@
         </field>
     </record>
 
-    <!-- Vue form -->
+    <!-- Form view -->
     <record id="view_bike_model_form" model="ir.ui.view">
         <field name="name">bike.model.form</field>
         <field name="model">bike.model</field>
         <field name="arch" type="xml">
-            <form string="Vélo">
+            <form string="Bike">
                 <sheet>
                     <group>
                         <field name="name"/>

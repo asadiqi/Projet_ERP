@@ -3,18 +3,18 @@ from odoo import models, fields, api
 
 class BikeModel(models.Model):
     _name = 'bike.model'
-    _description = 'Vélo'
+    _description = 'Bike'
 
-    # Informations de base
-    name = fields.Char(string="Nom", required=True)
-    brand = fields.Char(string="Marque")
+    # Basic information
+    name = fields.Char(string="Name", required=True)
+    brand = fields.Char(string="Brand")
 
     bike_type = fields.Selection(
-        [('vtt', 'VTT'), ('ville', 'Ville'), ('route', 'Route')],
+        [('vtt', 'Mountain Bike'), ('ville', 'City Bike'), ('route', 'Road Bike')],
         string="Type"
     )
 
-    price = fields.Float(string="Prix par jour")
+    price = fields.Float(string="Price per day")
     description = fields.Text(string="Description")
     image = fields.Binary(string="Image")
 
@@ -22,19 +22,19 @@ class BikeModel(models.Model):
     contract_ids = fields.One2many(
         'bike.rental.contract',
         'bike_id',
-        string="Contrats"
+        string="Contracts"
     )
 
-    # Calcul de disponibilité
+    # Availability calculation
     available = fields.Boolean(
-        string="Disponible",
+        string="Available",
         compute='_compute_available',
         store=True
     )
 
     @api.depends('contract_ids.start_date', 'contract_ids.end_date')
     def _compute_available(self):
-        """ Vélo disponible si aucun contrat actif aujourd'hui. """
+        """ Bike available if no active contract today. """
         today = fields.Date.today()
 
         for bike in self:
