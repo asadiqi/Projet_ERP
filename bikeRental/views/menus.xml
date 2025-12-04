@@ -1,26 +1,26 @@
 <odoo>
-    <!-- Menu principal -->
+    <!-- Main menu -->
     <menuitem id="menu_bike_rental_root"
-              name="Location de vélos"
+              name="Bike Rental"
               sequence="10"/>
 
-    <!-- Sous-menu : vélos -->
+    <!-- Sub-menu : bikes -->
     <menuitem id="menu_bike_models"
-              name="Vélos"
+              name="Bikes"
               parent="menu_bike_rental_root"
               action="action_bike_models"
               sequence="1"/>
 
-    <!-- Sous-menu : contrats -->
+    <!-- Sub-menu : contracts -->
     <menuitem id="menu_bike_rental_contracts"
-              name="Contrats de location"
+              name="Rental Contracts"
               parent="menu_bike_rental_root"
               action="action_bike_rental_contracts"
               sequence="2"/>
 
-    <!-- Sous-menu : disponibilité -->
+    <!-- Sub-menu : availability -->
     <menuitem id="menu_bike_availability" 
-              name="Disponibilité"  
+              name="Availability"  
               parent="menu_bike_rental_root" 
               action="action_bike_availability_wizard" 
               sequence="3"/>
