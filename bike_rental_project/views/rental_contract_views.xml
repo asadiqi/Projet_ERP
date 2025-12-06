@@ -36,6 +36,7 @@
                         <group>
                             <field name="name"/>
                             <field name="customer_id"/>
+                            <field name="bike_id"/>
                         </group>
 
                         <group>
