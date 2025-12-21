@@ -41,6 +41,14 @@ class BikeModel(models.Model):
         compute='_compute_sale_count'
     )
 
+    # Galerie d'images du vélo (1 vélo → plusieurs images)
+    image_ids = fields.One2many(
+        'bike.model.image',
+        'bike_id',
+        string="Gallery"
+    )
+
+
     @api.depends('contract_ids.start_date', 'contract_ids.end_date')
     def _compute_available(self):
         today = fields.Date.today()

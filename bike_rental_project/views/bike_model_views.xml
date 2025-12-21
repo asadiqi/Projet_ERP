@@ -54,7 +54,7 @@
                             <field name="price"/>
                             <field name="available" readonly="1"/>
                         </group>
-                        
+
                         <group>
                             <label for="image"/>
                             <div class="oe_avatar">
@@ -62,10 +62,26 @@
                             </div>
                         </group>
                     </group>
-                    
-                    <group>
-                        <field name="description"/>
-                    </group>
+
+                    <notebook>
+
+                        <!-- Description -->
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+
+                        <!-- 🔽 GALERIE D’IMAGES -->
+                        <page string="Catalogue">
+                            <field name="image_ids">
+                                <list editable="bottom">
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="image" widget="image"/>
+                                </list>
+                            </field>
+                        </page>
+
+                    </notebook>
                 </sheet>
             </form>
         </field>
