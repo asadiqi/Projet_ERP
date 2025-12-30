@@ -13,6 +13,7 @@
         'views/bike_model_views.xml',
         'views/rental_contract_views.xml',
         'views/availability_wizard_views.xml',
+        'views/rental_invoice_views.xml',
         'views/menu.xml',
 
         # Données initiales (CSV)

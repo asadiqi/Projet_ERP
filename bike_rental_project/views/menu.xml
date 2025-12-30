@@ -24,4 +24,11 @@
               parent="menu_bike_rental_root" 
               action="action_bike_availability_wizard" 
               sequence="3"/>
+    
+    <!-- Sub-menu : rental Invoices -->
+    <menuitem id="menu_rental_invoices"
+          name="Rental Invoices"
+          parent="menu_bike_rental_root"
+          action="action_rental_invoices"
+          sequence="4"/>
 </odoo>

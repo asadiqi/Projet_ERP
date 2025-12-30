@@ -1,37 +1,91 @@
 <odoo>
 
-    <!-- Action: opens list+form view of contracts -->
+    <!-- =========================
+         ACTION
+    ========================== -->
     <record id="action_bike_rental_contracts" model="ir.actions.act_window">
         <field name="name">Rental Contracts</field>
         <field name="res_model">bike.rental.contract</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- List view -->
+    <!-- =========================
+         LIST VIEW (avec couleurs)
+    ========================== -->
     <record id="view_bike_rental_contract_list" model="ir.ui.view">
         <field name="name">bike.rental.contract.list</field>
         <field name="model">bike.rental.contract</field>
         <field name="arch" type="xml">
-            <list string="Rental Contracts">
+            <list
+                decoration-danger="state == 'cancelled'"
+                decoration-success="state == 'done'"
+                decoration-warning="state == 'confirmed'"
+                decoration-info="state == 'ongoing'"
+            >
                 <field name="name"/>
                 <field name="customer_id"/>
                 <field name="bike_id"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                <field name="duration" string="Duration (days)"/>
-                <field name="price" string="Total Price"/>
+                <field name="duration"/>
+                <field name="price"/>
+                <field name="state"/>
             </list>
         </field>
     </record>
 
-    <!-- Form view -->
+    <!-- =========================
+         FORM VIEW
+    ========================== -->
     <record id="view_bike_rental_contract_form" model="ir.ui.view">
         <field name="name">bike.rental.contract.form</field>
         <field name="model">bike.rental.contract</field>
         <field name="arch" type="xml">
             <form string="Rental Contract">
-                <sheet>
 
+                <!-- ===== HEADER / WORKFLOW ===== -->
+                <header>
+
+                    <button name="action_confirm"
+                            type="object"
+                            string="Confirm"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_start_rental"
+                            type="object"
+                            string="Start Rental"
+                            class="btn-success"
+                            invisible="state != 'confirmed'"/>
+
+                    <button name="action_cancel"
+                            type="object"
+                            string="Cancel"
+                            class="btn-secondary"
+                            confirm="Are you sure you want to cancel this rental contract?"
+                            invisible="state in ('done','cancelled')"/>
+
+                    <!-- BOUTON RETURN BIKE -->
+                    <button name="action_return_bike"
+                            type="object"
+                            string="Return Bike"
+                            class="btn-warning"
+                            invisible="state != 'ongoing'"/>
+                            
+                    <!-- STATUSBAR COLORÉ -->
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_colors="{
+                               'draft': 'gray',
+                               'confirmed': 'blue',
+                               'ongoing': 'orange',
+                               'done': 'green',
+                               'cancelled': 'red'
+                           }"/>
+                </header>
+
+                <!-- ===== BODY ===== -->
+                <sheet>
                     <group>
                         <group>
                             <field name="name"/>
@@ -47,14 +101,13 @@
                         </group>
                     </group>
 
-                    <!-- Notebook for Notes section -->
                     <notebook>
                         <page string="Notes">
                             <field name="notes"/>
                         </page>
                     </notebook>
-
                 </sheet>
+
             </form>
         </field>
     </record>
