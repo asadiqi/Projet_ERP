@@ -4,7 +4,7 @@
     'category': 'Services',
     'summary': 'Gestion des contrats de location de vélos',
     'author': 'TeamAnasAmirOussama',
-    'depends': ['base', 'contacts', 'sale'],
+    'depends': ['base', 'contacts', 'sale', 'website_sale'],
     'data': [
         # Sécurité
         'security/ir.model.access.csv',

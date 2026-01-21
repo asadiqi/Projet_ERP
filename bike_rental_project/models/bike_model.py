@@ -96,4 +96,5 @@ class BikeModel(models.Model):
     def create(self, vals):
         bike = super(BikeModel, self).create(vals)
         bike.action_create_product()
+        
         return bike
